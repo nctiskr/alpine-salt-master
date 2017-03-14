@@ -23,4 +23,6 @@ RUN wget ${TARBALL} \
 # 4505 = Salt Pub ; 4506 = Salt Req
 EXPOSE 4505 4506
 
+WORKDIR "/etc/salt"
+
 CMD salt-master -d
