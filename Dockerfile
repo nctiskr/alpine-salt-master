@@ -18,9 +18,10 @@ RUN apk --update --update-cache upgrade \
 RUN wget ${TARBALL} \
     && tar xzf v${VERSION}.tar.gz \
     && pip install ./${TARBALL_BASE}/ \
-    && rm v${VERSION}.tar.gz
+    && rm -rf v${VERSION}.tar.gz \
+    && rm -rf salt-${VERSION}
 
 # 4505 = Salt Pub ; 4506 = Salt Req
 EXPOSE 4505 4506
 
-CMD salt-master -d -c /etc/salt/pki/
+CMD /usr/bin/salt-master  
