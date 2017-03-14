@@ -20,9 +20,9 @@ RUN wget ${TARBALL} \
     && pip install ./${TARBALL_BASE}/ \
     && rm v${VERSION}.tar.gz
 
+VOLUME ["/etc/salt"]
+
 # 4505 = Salt Pub ; 4506 = Salt Req
 EXPOSE 4505 4506
-
-WORKDIR "/etc/salt"
 
 CMD salt-master -d
