@@ -18,8 +18,7 @@ RUN apk --update --update-cache upgrade \
 RUN wget ${TARBALL} \
     && tar xzf v${VERSION}.tar.gz \
     && pip install ./${TARBALL_BASE}/ \
-    && rm v${VERSION}.tar.gz \
-    && rm salt-${VERSION}
+    && rm v${VERSION}.tar.gz
 
 COPY docker-entrypoint.sh /
 
