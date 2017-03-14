@@ -20,9 +20,7 @@ RUN wget ${TARBALL} \
     && pip install ./${TARBALL_BASE}/ \
     && rm v${VERSION}.tar.gz
 
-COPY docker-entrypoint.sh /
-
 # 4505 = Salt Pub ; 4506 = Salt Req
 EXPOSE 4505 4506
 
-CMD ["/docker-entrypoint.sh"]
+CMD /usr/bin/salt-master -d
