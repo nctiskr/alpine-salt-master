@@ -25,4 +25,4 @@ COPY docker-entrypoint.sh /
 # 4505 = Salt Pub ; 4506 = Salt Req
 EXPOSE 4505 4506
 
-CMD ["sh" "/docker-entrypoint.sh"]
+CMD ["-c" "/docker-entrypoint.sh"]
