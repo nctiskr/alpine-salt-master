@@ -20,8 +20,12 @@ RUN wget ${TARBALL} \
     && pip install ./${TARBALL_BASE}/ \
     && rm -rf v${VERSION}.tar.gz \
     && rm -rf salt-${VERSION}
+RUN mkdir /etc/salt \
+    && mkdir -p /srv/salt/base
+
+COPY m* /etc/salt/
 
 # 4505 = Salt Pub ; 4506 = Salt Req
 EXPOSE 4505 4506
 
-CMD /usr/bin/salt-master  
+CMD /usr/bin/salt-master -d  
