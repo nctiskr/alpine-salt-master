@@ -21,9 +21,12 @@ RUN wget ${TARBALL} \
     && rm -rf v${VERSION}.tar.gz \
     && rm -rf salt-${VERSION}
 RUN mkdir /etc/salt \
+    && mkdir /etc/salt/master.d \
+    && mkdir /etc/salt/minion.d \
     && mkdir -p /srv/salt/base
 
-COPY m* /etc/salt/
+COPY roots.conf /etc/salt/master.d/
+COPY master.conf /etc/salt/minion.d/
 
 # 4505 = Salt Pub ; 4506 = Salt Req
 EXPOSE 4505 4506
