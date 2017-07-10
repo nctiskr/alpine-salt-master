@@ -9,6 +9,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'docker build -t alpine-salt-master .'
+        echo 'build success'
       }
     }
   }
